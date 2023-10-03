@@ -21,49 +21,24 @@ pipeline {
             }
         }
         stage('Snyk SCA Test') 
-        {
+        	{
                  steps {
                     script{
                     snykSecurity severity: 'high', snykInstallation: 'snyk@latest', snykTokenId: 'SNYK_TOKEN'
-                        
-}
+			}
                       } 
-        }
-stage('Fortify Clean')
+        	}
+	stage('Fortify SAST Scan')
 		{
 		steps
 			{
 			fortifyClean addJVMOptions: '', buildID: 'pyproj', logFile: '', maxHeap: ''
-			}
-		}
-stage('Fortify Update')
-		{
-		steps
-			{
 			fortifyUpdate locale: 'en', updateServerURL: 'https://update.fortify.com'
-			}
-		}
-		stage('Fortify Transalte')
-		{
-		steps
-			{
 			fortifyTranslate addJVMOptions: '', buildID: 'pyproj', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyOther(otherIncludesList: 'C:\\Users\\saksham.b.CYBERPWN\\Desktop\\pydevops-master', otherOptions: '')
+			fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
+			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '[fortify priority order]:critical', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
 			}
 		}
-        stage('Fortify SAST Test') 
-        {
-                 steps {
-fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
-                      }
-        }
-		stage('Fortify Upload')
-		{
-		steps
-			{
-			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '[fortify priority order]:high', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
-			}
-		}
-
         stage('Building a Docker Image')
         {
             steps {

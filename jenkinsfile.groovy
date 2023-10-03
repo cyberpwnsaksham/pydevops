@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Test py') {
             steps {
-                script {
+                catchError {
                     bat "py -m pytest"
                 }
             }

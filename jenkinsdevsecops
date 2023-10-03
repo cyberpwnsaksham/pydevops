@@ -30,6 +30,13 @@ pipeline {
 
                       } 
         }
+stage('Fortify Update')
+		{
+		steps
+			{
+			fortifyUpdate locale: 'en', updateServerURL: 'https://update.fortify.com'
+			}
+		}
         stage('Fortify SAST Test') 
         {
                  steps {

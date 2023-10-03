@@ -1,21 +1,21 @@
 pipeline {
     agent any
     environment {
-        dockerImage = 'my-dotnet-app'
-        registry = 'bsaksham/dotnetwebapp:third'
+        dockerImage = 'my-py-app'
+        registry = 'bsaksham/pydevops:devsecops'
         registryCredential = 'dockerhub'
     }
     stages {
         stage('Build py') {
             steps {
-                catchError {
+                script {
                         bat 'start /b python app.py'
                 }
             }
         }
         stage('Test py') {
             steps {
-                catchError {
+                script {
                     bat "py -m pytest"
                 }
             }

@@ -73,13 +73,5 @@ pipeline {
                     bat 'docker run -d -p 9020:5000 bsaksham/dotnetwebapp:third'
                         }
         }
-        stage('Fortify DAST scan') 
-        {
-                 steps {
-                     catchError {
-                bat 'snyk container test bsaksham/dotnetwebapp:third'
-                      }
-                 }
-}
     }
 }

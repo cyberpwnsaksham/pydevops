@@ -8,15 +8,15 @@ pipeline {
     stages {
         stage('Build py') {
             steps {
-                catchError {
+                script {
                         bat 'start /b python app.py'
                 }
             }
         }
         stage('Test py') {
             steps {
-                catchError {
-                    bat "py -m pytest"
+                script {
+                    bat "python -m unittest app.py"
                 }
             }
         }

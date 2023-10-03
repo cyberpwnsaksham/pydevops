@@ -44,6 +44,13 @@ stage('Fortify Update')
 			fortifyUpdate locale: 'en', updateServerURL: 'https://update.fortify.com'
 			}
 		}
+		stage('Fortify Transalte')
+		{
+		steps
+			{
+			fortifyTranslate addJVMOptions: '', buildID: 'pyproj', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyOther(otherIncludesList: '', otherOptions: '')
+			}
+		}
         stage('Fortify SAST Test') 
         {
                  steps {

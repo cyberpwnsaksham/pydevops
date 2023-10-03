@@ -48,7 +48,7 @@ stage('Fortify Update')
 		{
 		steps
 			{
-			fortifyTranslate addJVMOptions: '', buildID: 'pyproj', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyOther(otherIncludesList: '', otherOptions: '')
+			fortifyTranslate addJVMOptions: '', buildID: 'pyproj', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyOther(otherIncludesList: '', SrcFiles: 'C:\\Users\\saksham.b.CYBERPWN\\Desktop\\pydevops-master' otherOptions: '')
 			}
 		}
         stage('Fortify SAST Test') 

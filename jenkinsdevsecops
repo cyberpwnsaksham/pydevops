@@ -40,7 +40,7 @@ stage('Fortify Update')
         stage('Fortify SAST Test') 
         {
                  steps {
-fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
+fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj1.0', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
                       }
         }
         stage('Building a Docker Image')

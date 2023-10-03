@@ -9,7 +9,7 @@ pipeline {
         stage('Build py') {
             steps {
                 catchError {
-                        bat 'py app.py'
+                        bat 'start /b python app.py'
                 }
             }
         }

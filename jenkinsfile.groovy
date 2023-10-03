@@ -9,14 +9,14 @@ pipeline {
         stage('Build py') {
             steps {
                 script {
-                        bat 'python3 app.py'
+                        bat 'py app.py'
                 }
             }
         }
         stage('Test py') {
             steps {
                 script {
-                    bat "python3 -m pytest"
+                    bat "py -m pytest"
                 }
             }
         }

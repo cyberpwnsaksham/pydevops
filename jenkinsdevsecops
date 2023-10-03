@@ -16,7 +16,7 @@ pipeline {
         stage('Test py') {
             steps {
                 script {
-                    bat "py -m pytest"
+                    bat "python -m unittest app.py"
                 }
             }
         }

@@ -20,6 +20,13 @@ pipeline {
                 }
             }
         }
+stage ('DAST')
+{
+steps { script {
+bat '''cd C:\\Program Files\\Fortify\\Fortify WebInspect
+wi.exe -u "http://localhost:9010/" -ps 1 -ep ".\\results.fpr"'''
+}
+}}
         stage('Snyk SCA Test') 
         	{
                  steps {

@@ -60,7 +60,7 @@ fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepack
 		{
 		steps
 			{
-			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: 'high', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
+			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '[fortify priority order]:high', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
 			}
 		}
 

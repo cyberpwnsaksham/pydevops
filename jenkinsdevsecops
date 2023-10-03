@@ -57,6 +57,14 @@ stage('Fortify Update')
 fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
                       }
         }
+		stage('Fortify Upload')
+		{
+		steps
+			{
+			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
+			}
+		}
+
         stage('Building a Docker Image')
         {
             steps {

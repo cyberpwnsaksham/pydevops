@@ -20,13 +20,6 @@ pipeline {
                 }
             }
         }
-stage ('DAST')
-{
-steps { script {
-bat '''cd C:\\Program Files\\Fortify\\Fortify WebInspect
-wi.exe -u "http://localhost:9010/" -ps 1 -ep ".\\results.fpr"'''
-}
-}}
         stage('Snyk SCA Test') 
         	{
                  steps {
@@ -80,5 +73,13 @@ wi.exe -u "http://localhost:9010/" -ps 1 -ep ".\\results.fpr"'''
                     bat 'docker run -d -p 9020:5000 bsaksham/dotnetwebapp:third'
                         }
         }
+	stage ('DAST scan')
+	{
+	steps { script {
+	bat '''cd C:\\Program Files\\Fortify\\Fortify WebInspect
+	wi.exe -u "http://localhost:9020/" -ps 1 -ep ".\\pyprogresults.fpr
+	fortifyclient -url http://localhost:8010/ssc -authtoken f694774b-e84c-4967-a68c-f9a229198221 uploadFPR -file "pyprogresults.fpr" - application "dastresults" - applicationVersion "1"'''
+		}
+		}}
     }
 }

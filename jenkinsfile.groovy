@@ -9,15 +9,14 @@ pipeline {
         stage('Build py') {
             steps {
                 script {
-                    bat "dotnet restore"
-                    bat "dotnet build"
+                        bat 'python3 app.py'
                 }
             }
         }
         stage('Test py') {
             steps {
                 script {
-                    bat "dotnet test"
+                    bat "python3 -m pytest"
                 }
             }
         }

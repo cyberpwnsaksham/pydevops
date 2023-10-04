@@ -50,7 +50,7 @@ pipeline {
                         stage('Snyk Container Image Test') 
         {
                  steps {
-                     catchError {
+                     script {
                 bat 'snyk container test bsaksham/pydevops:devsecops'
                       }
                  }
@@ -75,7 +75,7 @@ pipeline {
         }
 	stage ('DAST scan')
 	{
-	steps { script {
+	steps { catchError {
 	bat '''cd C:\\Program Files\\Fortify\\Fortify WebInspect
 	wi.exe -u "http://localhost:9020/" -ps 1 -ep ".\\pyprogresults.fpr
 	fortifyclient -url http://localhost:8010/ssc -authtoken f694774b-e84c-4967-a68c-f9a229198221 uploadFPR -file "pyprogresults.fpr" - application "dastresults" - applicationVersion "1"'''

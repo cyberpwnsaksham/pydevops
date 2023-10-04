@@ -36,7 +36,7 @@ pipeline {
 			fortifyUpdate locale: 'en', updateServerURL: 'https://update.fortify.com'
 			fortifyTranslate addJVMOptions: '', buildID: 'pyproj', excludeList: '', logFile: '', maxHeap: '', projectScanType: fortifyOther(otherIncludesList: 'C:\\Users\\saksham.b.CYBERPWN\\Desktop\\pydevops-master', otherOptions: '')
 			fortifyScan addJVMOptions: '', addOptions: '', buildID: 'pyproj', customRulepacks: '', logFile: '', maxHeap: '', resultsFile: 'pyprojresults.fpr'
-			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '[fortify priority order]:critical', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
+			fortifyUpload appName: 'pyproj1.0', appVersion: '1.0', failureCriteria: '[fortify priority order]:high', filterSet: '', pollingInterval: '', resultsFile: 'pyprojresults.fpr', timeout: '360'
 			}
 		}
         stage('Building a Docker Image')
